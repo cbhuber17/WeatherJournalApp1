@@ -1,0 +1,36 @@
+html {
+    font-family: Raleway;
+    color: #fafafa;
+}
+
+body {
+    /* background: linear-gradient(to bottom right, #3a3f44, grey); */
+    background: #3a3f44;
+    border: 2px solid white;
+}
+
+h1 {
+    text-align: center;
+    padding: 0em 1em 0em;
+    text-shadow: 3px 3px 5px silver;
+    font-size: 2em;
+}
+
+/* TBD class and ID both have city name */
+.city {
+    text-align: center;
+    padding: 1em 0em;
+}
+
+#city {
+    /* TBD choose font inside text box */
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 5px;
+    /* TBD make box bigger */
+}
+
+.units {
+    /* TBD make radio buttons bigger?  Hover styles on radio buttons? */
+    text-align: center;
+    padding: 1em 0em;
+}
