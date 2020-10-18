@@ -18,16 +18,10 @@
     <div class="city">
         <input type="text" id="city" placeholder="Enter city here...">
     </div>
-    <div class="units">
-        <input type="radio" id="metric" name="units" value="metric">
-        <label for="metric">Metric</label>
-        <input type="radio" id="imperial" name="units" value="imperial">
-        <label for="imperial">Imperial</label>
-    </div>
     <div class="feel">
-        <label for="feelings">Describe your current feeling for the weather in this journal app!</label>
+        <label for="feelings">Hi there, how are you feeling today? Record your feelings in this journal app!</label>
         <textarea name="journalEntry" id="feelings" cols="30" rows="10"
-            placeholder="Enter your feelings about the weather here..."></textarea>
+            placeholder="Enter your feelings here..."></textarea>
 
         <button id="generate" type="submit">Generate</button>
     </div>
@@ -40,6 +34,7 @@
         <div id="content"></div>
     </div>
 
+    <script src="apikey.js" type="text/javascript"></script>
     <script src="app.js" type="text/javascript"></script>
 
 </body>

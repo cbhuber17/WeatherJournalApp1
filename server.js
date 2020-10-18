@@ -1,8 +1,9 @@
 // Local server to allow an app to run locally in a browser
 // Servers receive requests, processes them and returns a response
+// TBD document functions
 
 // API endpoint for this project
-const projectData = {};
+let projectData = {};
 
 // Use express to build web apps and APIs
 // Easy access to web application settings like port numbers
@@ -39,14 +40,48 @@ app.use(cors());
 // The app will be used inside the website folder
 app.use(express.static('website'));
 
-// Port to sue
+// Port to use
 const port = 8000;
 
 // Start up the server
 const server = app.listen(port, listening);
 
-//
+// TBD remove
+// app.get('/', function (req, res) {
+//     res.send('Hi there.');
+// })
+
+// TBD is '/' path correct?
+// app.post('/', addWeatherHistory);
+
+// function addWeatherHistory(req, res) {
+//     projectData.push(req.body);
+//     // TBD remove
+//     console.log(data);
+// }
+
+// Show the server is running
 function listening() {
-    console.log('server running');
-    console.log(`running on localhost port: ${port}`);
+    console.log(`Server running on port ${port}`);
 };
+
+
+
+// GET route
+// TBD double check below
+app.get('/get', getData);
+
+function getData(req, res) {
+    res.send(projectData);
+}
+
+// POST route
+// TBD double check below
+app.post('/add', postData);
+
+function postData(req, res) {
+    projectData = req.body;
+    // projectData.push(req.body);
+    // response.send({ message: "Post received" })
+    console.log(projectData)
+}
