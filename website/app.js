@@ -2,6 +2,8 @@ const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather?';
 
 const CITY_QUERY = 'q=';
 
+const ZIP_QUERY = 'zip=';
+
 const METRIC_UNITS = '&units=metric';
 
 const APP_ID = `&APPID=${OWM_API_KEY}`;
@@ -9,12 +11,12 @@ const APP_ID = `&APPID=${OWM_API_KEY}`;
 const ICON_URL = 'http://openweathermap.org/img/wn/';
 
 /*
-* Async function that makes the API call to OWM using the city as the input
-* @param  {String} city - A city name (that is supported by OWM API call)
+* Async function that makes the API call to OWM using the url as the input
+* @param  {String} url - The URL for the API call (that is supported by OWM API call)
 * @return {Object} - Weather data from the API call (if API call is successful)
 */
-async function getOWMWeatherAPI(city) {
-    url = BASE_URL + CITY_QUERY + city + METRIC_UNITS + APP_ID;
+async function getOWMWeatherAPI(url) {
+
     weatherResult = await fetch(url);
 
     try {
@@ -22,8 +24,8 @@ async function getOWMWeatherAPI(city) {
         return weatherData;
     }
     catch (error) {
-        console.log('ERROR: Could not get weatherData.  Msg: ' + error);
-        alert(`ERROR: Could not get weather data for: ${city}. Please try again later.`);
+        console.log('ERROR: Could not get weatherData in getOWMWeatherAPI().  Msg: ' + error);
+        alert(`ERROR: Could not get weather data. Please try again later.`);
     }
 }
 
@@ -61,11 +63,12 @@ function captureAPIandEntry() {
 
     // Get the city and journal entry from the text box inputs
     const city = document.getElementById('city').value;
+    const zip = document.getElementById('zip').value;
     const feelings = document.getElementById('feelings').value;
 
     // Make sure they have data filled out
-    if (city === '') {
-        alert('Please enter a city.');
+    if (city === '' && zip === '') {
+        alert('Please enter a city or zip code.');
         return;
     }
 
@@ -74,8 +77,16 @@ function captureAPIandEntry() {
         return;
     }
 
+    // City will take precedence
+    if (city !== '') {
+        url = BASE_URL + CITY_QUERY + city + METRIC_UNITS + APP_ID;
+    }
+    else {
+        url = BASE_URL + ZIP_QUERY + zip + METRIC_UNITS + APP_ID;
+    }
+
     // Returns weatherData from the API call
-    getOWMWeatherAPI(city)
+    getOWMWeatherAPI(url)
 
         // First chained promise --> then grab the necessary data from the returned weatherData object
         .then(function (weatherData) {
@@ -99,7 +110,7 @@ function captureAPIandEntry() {
                     .then(getJournalEntryFromServer('/all'))
             }
             else {
-                alert('Invalid city entered.  Try again.');
+                alert('Invalid city or zip entered.  Try again.');
                 return;
             }
         })

@@ -13,6 +13,7 @@ body {
     height: fit-content;
     margin: 0em 3em 3em 3em;
     padding: 1em;
+    text-align: center;
 }
 
 h1 {
@@ -41,6 +42,18 @@ h2 {
 }
 
 #city {
+    font-family: 'Courier New', Courier, monospace;
+    border-radius: 5px;
+    height: 25px;
+    width: 20%;
+}
+
+.zip {
+    text-align: center;
+    padding: 1em 0em;
+}
+
+#zip {
     font-family: 'Courier New', Courier, monospace;
     border-radius: 5px;
     height: 25px;

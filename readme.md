@@ -24,7 +24,11 @@ After installation, the server is established with the following command:
 node server.js
 ```
 
+Refer to details inside package.json.
+
 ## Guidance
 Once the server is running, open the web page to the same port as the server, and enter in a valid city and journal entry (cannot be blank).
 
-The page will dynamically return the current weather for the city and add the journal entry next to the weather.
+An American zip code can also be entered (leave city blank), but note if a city is provided, it will take precedence.
+
+The page will dynamically return the current weather for the city (or zip) and add the journal entry next to the weather.

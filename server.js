@@ -2,8 +2,10 @@
 // Servers receive requests, processes them and returns a response
 
 // API endpoint for this project
+let projectData = {};
+
 // This will hold all of the data for each weather API call and journal entry
-let projectData = [];
+let projectDataHistory = [];
 
 // Use express to build web apps and APIs
 // Easy access to web application settings like port numbers
@@ -60,7 +62,7 @@ app.get('/all', getData);
 // req - request
 // res - response
 function getData(req, res) {
-    res.send(projectData);
+    res.send(projectDataHistory);
 }
 
 // POST route for the server
@@ -71,7 +73,8 @@ app.post('/add', postData);
 function postData(req, res) {
 
     // Store the request in the projectData array on the server - this allows history to be recalled
-    projectData.push(req.body);
+    projectData = req.body;
+    projectDataHistory.push(projectData);
 
     // If you don't send a response, you'll get POST net::ERR_EMPTY_RESPONSE when awaiting a POST response (after about 2 min)
     res.send({ msg: "Received" });
