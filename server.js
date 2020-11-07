@@ -46,7 +46,8 @@ app.use(cors());
 app.use(express.static('website'));
 
 // Port to use
-const port = 8000;
+// process.env.PORT is for heroku, as heroku will provide a port number for us
+const port = process.env.PORT || 8000;
 
 // Start up the server
 const server = app.listen(port, listening);

@@ -32,3 +32,7 @@ Once the server is running, open the web page to the same port as the server, an
 An American zip code can also be entered (leave city blank), but note if a city is provided, it will take precedence.
 
 The page will dynamically return the current weather for the city (or zip) and add the journal entry next to the weather.
+
+## URL
+
+The web app is hosted on heroku here: https://weather-journal-app-cbhuber.herokuapp.com/
